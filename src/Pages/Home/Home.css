@@ -1,0 +1,1869 @@
+/* =====================================================
+   PLANPOL HOME
+===================================================== */
+
+.home-page {
+  width: 100%;
+  overflow: hidden;
+  background: #fff;
+  color: #111;
+}
+
+.home-blue {
+  color: #1557ff;
+}
+
+.section-label {
+  display: block;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+
+  color: #777;
+}
+
+
+/* =====================================================
+   SECTION 01 — HERO
+===================================================== */
+
+.home-hero {
+  position: relative;
+
+  width: 100%;
+
+  height: calc(100vh - 82px);
+
+  min-height: 500px;
+
+  max-height: 620px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      105deg,
+      #edf5ff 0%,
+      #e7f0ff 42%,
+      #e8e9ff 70%,
+      #f0e7ff 100%
+    );
+}
+
+
+/* Background circle */
+
+.home-hero-bg-circle {
+  position: absolute;
+
+  width: 720px;
+  height: 720px;
+
+  right: -380px;
+  top: -350px;
+
+  border-radius: 50%;
+
+  border: 1px solid
+    rgba(21, 87, 255, 0.08);
+
+  pointer-events: none;
+}
+
+
+/* Hero inner */
+
+.home-hero-inner {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: stretch;
+
+  justify-content: space-between;
+}
+
+
+/* =====================================================
+   HERO ART
+===================================================== */
+
+.home-hero-art {
+  position: absolute;
+
+  z-index: 1;
+
+  left: -10px;
+
+  bottom: 0;
+
+  width: 46vw;
+
+  max-width: 590px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: flex-start;
+
+  pointer-events: none;
+}
+
+.home-hero-art img {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  object-fit: contain;
+
+  object-position: bottom left;
+
+  will-change: transform;
+}
+
+
+/* =====================================================
+   HERO COPY
+===================================================== */
+
+.home-hero-copy {
+  position: absolute;
+
+  z-index: 5;
+
+  width: 520px;
+
+  right: 10.5%;
+
+  top: 50%;
+
+  transform: translateY(-43%);
+
+  text-align: left;
+}
+
+
+/* Hero title */
+
+.home-hero-title {
+  margin: 0;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(
+      58px,
+      5.9vw,
+      86px
+    );
+
+  line-height: 0.96;
+
+  letter-spacing: -0.055em;
+
+  font-weight: 500;
+}
+
+
+/* Animated title lines */
+
+.home-hero-title-line {
+  display: block;
+}
+
+
+/* World's first */
+
+.home-first-line {
+  margin-bottom: 16px;
+
+  color: #111;
+
+  font-size: 0.62em;
+
+  line-height: 1;
+
+  font-weight: 400;
+
+  letter-spacing: -0.035em;
+}
+
+
+/* AI Powered */
+
+.home-powered {
+  font-weight: 700;
+}
+
+
+/* PoliTech */
+
+.home-politech {
+  margin-top: 2px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.065em;
+}
+
+
+/* =====================================================
+   HERO DESCRIPTION
+===================================================== */
+
+.home-hero-description {
+  display: block;
+
+  margin:
+    27px 0 0 4px;
+
+  font-size: 17px;
+
+  line-height: 1.4;
+
+  color: #222;
+
+  font-weight: 400;
+}
+
+.home-hero-description
+  .home-blue {
+  font-weight: 500;
+}
+
+
+/* Cursor */
+
+.typing-cursor {
+  display: inline-block;
+
+  margin-left: 2px;
+
+  font-weight: 300;
+
+  animation:
+    blinkCursor 0.8s infinite;
+}
+
+@keyframes blinkCursor {
+
+  0%,
+  45% {
+    opacity: 1;
+  }
+
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/* =====================================================
+   HERO BOTTOM BLUE LINE
+===================================================== */
+
+.home-hero-bottom-line {
+  position: absolute;
+
+  z-index: 10;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 8px;
+
+  background: #1557ff;
+}
+
+
+/* =====================================================
+   SECTION 02 — STATS
+===================================================== */
+
+.home-stats {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 520px;
+
+  overflow: hidden;
+
+  background: #0878f9;
+
+  color: #fff;
+
+  padding: 0;
+}
+
+
+/* Stats inner */
+
+.home-stats-inner {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+
+  min-height: 360px;
+
+  display: grid;
+
+  grid-template-columns:
+    55% 45%;
+
+  align-items: start;
+
+  padding:
+    55px 7% 0;
+}
+
+
+/* Stats grid */
+
+.home-stats-grid {
+  width: 100%;
+
+  max-width: 560px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  column-gap: 65px;
+
+  row-gap: 38px;
+}
+
+
+/* Stat */
+
+.home-stat {
+  min-height: 82px;
+
+  padding: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-start;
+
+  border: none;
+
+  background: transparent;
+}
+
+
+/* Number */
+
+.home-stat strong {
+  display: block;
+
+  margin: 0;
+
+  color: #fff;
+
+  font-size:
+    clamp(
+      48px,
+      4.4vw,
+      66px
+    );
+
+  line-height: 0.95;
+
+  letter-spacing: -0.055em;
+
+  font-weight: 400;
+
+  text-shadow:
+    0 2px 5px
+    rgba(0, 0, 0, 0.12);
+}
+
+
+/* Label */
+
+.home-stat span {
+  display: block;
+
+  margin-top: 12px;
+
+  color: #fff;
+
+  font-size: 14px;
+
+  line-height: 1;
+
+  letter-spacing: 0;
+
+  font-weight: 400;
+
+  opacity: 0.95;
+}
+
+
+/* =====================================================
+   STATS RIGHT CONTENT
+===================================================== */
+
+.home-stats-copy {
+  width: 100%;
+
+  max-width: 560px;
+
+  padding-left: 35px;
+
+  text-align: center;
+}
+
+.home-stats-copy h2 {
+  margin: 0;
+
+  color: #fff;
+
+  font-size:
+    clamp(
+      27px,
+      2.4vw,
+      36px
+    );
+
+  line-height: 1.03;
+
+  letter-spacing: -0.045em;
+
+  font-weight: 400;
+}
+
+.home-stats-copy h2 span {
+  color: #fff;
+
+  font-weight: 400;
+}
+
+.home-stats-copy p {
+  width: 100%;
+
+  max-width: 370px;
+
+  margin:
+    17px auto 0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.88
+    );
+
+  font-size: 11px;
+
+  line-height: 1.45;
+
+  font-weight: 400;
+}
+
+
+/* =====================================================
+   CROWD
+===================================================== */
+
+.home-crowd {
+  position: absolute;
+
+  z-index: 2;
+
+  right: -5px;
+
+  bottom: -5px;
+
+  width: 47%;
+
+  max-width: 620px;
+
+  height: auto;
+
+  margin: 0;
+}
+
+.home-crowd img {
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  object-fit: contain;
+
+  object-position: bottom right;
+
+  opacity: 1;
+}
+
+
+/* =====================================================
+   SECTION 03 — STORY
+===================================================== */
+
+.home-story {
+  padding: 160px 0;
+
+  background: #fff;
+}
+
+.home-story-inner {
+  width:
+    min(
+      1320px,
+      calc(100% - 100px)
+    );
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  align-items: center;
+
+  gap: 100px;
+}
+
+.home-story-image {
+  position: relative;
+
+  min-height: 540px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.home-compass-ring {
+  position: absolute;
+
+  width: 430px;
+  height: 430px;
+
+  border:
+    1px solid #dce1e8;
+
+  border-radius: 50%;
+}
+
+.home-compass-ring::before,
+.home-compass-ring::after {
+  content: "";
+
+  position: absolute;
+
+  border:
+    1px solid #e7eaf0;
+
+  border-radius: 50%;
+}
+
+.home-compass-ring::before {
+  inset: 45px;
+}
+
+.home-compass-ring::after {
+  inset: 100px;
+}
+
+.home-compass {
+  position: relative;
+
+  z-index: 2;
+
+  width:
+    min(
+      90%,
+      460px
+    );
+
+  object-fit: contain;
+}
+
+.home-story-copy h2 {
+  margin:
+    25px 0 30px;
+
+  font-size:
+    clamp(
+      55px,
+      6vw,
+      90px
+    );
+
+  line-height: 0.9;
+
+  letter-spacing: -0.07em;
+
+  font-weight: 500;
+}
+
+.home-story-copy h2 span {
+  color: #1557ff;
+}
+
+.home-story-copy p {
+  max-width: 440px;
+
+  margin:
+    0 0 30px;
+
+  font-size: 16px;
+
+  line-height: 1.75;
+
+  color: #70757e;
+}
+
+
+/* Links */
+
+.text-link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  color: #111;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.text-link span {
+  color: #1557ff;
+
+  font-size: 18px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.text-link:hover span {
+  transform:
+    translate(
+      4px,
+      -4px
+    );
+}
+
+
+/* =====================================================
+   SECTION 04 — AWARDS
+===================================================== */
+
+.home-awards {
+  padding:
+    110px 0 140px;
+
+  background: #f5f7fa;
+}
+
+.home-section-top {
+  width:
+    min(
+      1320px,
+      calc(100% - 100px)
+    );
+
+  margin:
+    auto auto 40px;
+
+  display: flex;
+
+  justify-content:
+    space-between;
+}
+
+.section-count {
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  color: #888;
+}
+
+.home-awards-grid {
+  width:
+    min(
+      1320px,
+      calc(100% - 100px)
+    );
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 15px;
+}
+
+.home-award {
+  min-height: 280px;
+
+  padding: 30px;
+
+  background: #fff;
+
+  border:
+    1px solid #e1e4e9;
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.home-award:hover {
+  transform:
+    translateY(-8px);
+
+  box-shadow:
+    0 25px 60px
+    rgba(
+      0,
+      0,
+      0,
+      0.07
+    );
+}
+
+.home-award > span {
+  font-size: 11px;
+
+  color: #1557ff;
+}
+
+.home-award h3 {
+  margin:
+    80px 0 15px;
+
+  font-size: 28px;
+
+  line-height: 1;
+
+  letter-spacing: -0.04em;
+
+  font-weight: 500;
+}
+
+.home-award p {
+  margin: 0;
+
+  color: #777;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+
+/* =====================================================
+   SECTION 05 — EXPERIENCE
+===================================================== */
+
+.home-experience {
+  position: relative;
+
+  min-height: 700px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #fff;
+}
+
+.home-experience-content {
+  position: relative;
+
+  z-index: 3;
+
+  max-width: 680px;
+
+  text-align: center;
+}
+
+.home-experience-content
+  .section-label {
+  margin-bottom: 30px;
+}
+
+.home-experience-content h2 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      55px,
+      7vw,
+      105px
+    );
+
+  line-height: 0.88;
+
+  letter-spacing: -0.075em;
+
+  font-weight: 500;
+}
+
+.home-experience-content h2 span {
+  color: #1557ff;
+}
+
+.home-experience-content p {
+  max-width: 510px;
+
+  margin:
+    40px auto 30px;
+
+  font-size: 15px;
+
+  line-height: 1.75;
+
+  color: #777;
+}
+
+
+/* Experience circles */
+
+.home-decoration-left,
+.home-decoration-right {
+  position: absolute;
+
+  width: 370px;
+  height: 370px;
+
+  border:
+    1px solid #e2e5ea;
+
+  border-radius: 50%;
+}
+
+.home-decoration-left {
+  left: -180px;
+}
+
+.home-decoration-right {
+  right: -180px;
+}
+
+.home-experience-decoration div {
+  position: absolute;
+
+  inset: 45px;
+
+  border:
+    1px solid #e8ebef;
+
+  border-radius: 50%;
+}
+
+.home-experience-decoration
+  div:nth-child(2) {
+  inset: 100px;
+}
+
+.home-experience-decoration
+  div:nth-child(3) {
+  inset: 150px;
+}
+
+
+/* =====================================================
+   SECTION 06 — TEAM
+===================================================== */
+
+.home-team {
+  padding:
+    120px 0 140px;
+
+  background: #f5f7fa;
+}
+
+.home-team-grid {
+  width:
+    min(
+      1100px,
+      calc(100% - 100px)
+    );
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 35px;
+}
+
+.home-team-card {
+  background: #fff;
+}
+
+.home-team-image {
+  height: 520px;
+
+  overflow: hidden;
+
+  background: #e9edf2;
+}
+
+.home-team-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.7s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+.home-team-card:hover
+  .home-team-image img {
+  transform:
+    scale(1.05);
+}
+
+.home-team-info {
+  padding: 25px;
+}
+
+.home-team-info > span {
+  color: #1557ff;
+
+  font-size: 11px;
+}
+
+.home-team-info h3 {
+  margin:
+    15px 0 7px;
+
+  font-size: 28px;
+
+  letter-spacing: -0.04em;
+
+  font-weight: 500;
+}
+
+.home-team-info p {
+  margin: 0;
+
+  font-size: 12px;
+
+  color: #777;
+}
+
+.home-team-link {
+  width:
+    min(
+      1100px,
+      calc(100% - 100px)
+    );
+
+  margin:
+    45px auto 0;
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  padding-bottom: 12px;
+
+  border-bottom:
+    1px solid #cfd4dc;
+
+  color: #111;
+
+  text-decoration: none;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.home-team-link span {
+  color: #1557ff;
+
+  font-size: 18px;
+}
+
+
+/* =====================================================
+   SECTION 07 — PRODUCTS
+===================================================== */
+
+.home-products {
+  padding: 150px 0;
+
+  background: #fff;
+}
+
+.home-products-heading {
+  width:
+    min(
+      1320px,
+      calc(100% - 100px)
+    );
+
+  margin: auto;
+}
+
+.home-products-heading h2 {
+  margin:
+    25px 0;
+
+  font-size:
+    clamp(
+      60px,
+      7vw,
+      110px
+    );
+
+  line-height: 0.88;
+
+  letter-spacing: -0.075em;
+
+  font-weight: 500;
+}
+
+.home-products-heading h2 span {
+  color: #1557ff;
+}
+
+.home-products-heading p {
+  max-width: 420px;
+
+  margin:
+    0 0 75px;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+
+  color: #777;
+}
+
+.home-products-list {
+  width:
+    min(
+      1320px,
+      calc(100% - 100px)
+    );
+
+  margin: auto;
+
+  border-top:
+    1px solid #d9dde4;
+}
+
+.home-product-row {
+  display: grid;
+
+  grid-template-columns:
+    80px 1fr 40px;
+
+  align-items: center;
+
+  min-height: 125px;
+
+  border-bottom:
+    1px solid #d9dde4;
+
+  color: #111;
+
+  text-decoration: none;
+
+  transition:
+    padding 0.4s ease,
+    color 0.3s ease;
+}
+
+.home-product-row
+  > span:first-child {
+  font-size: 11px;
+
+  color: #1557ff;
+}
+
+.home-product-row strong {
+  font-size:
+    clamp(
+      28px,
+      3vw,
+      48px
+    );
+
+  font-weight: 500;
+
+  letter-spacing: -0.05em;
+}
+
+.home-product-row
+  > span:last-child {
+  font-size: 20px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.home-product-row:hover {
+  padding-left: 20px;
+
+  color: #1557ff;
+}
+
+.home-product-row:hover
+  > span:last-child {
+  transform:
+    translate(
+      5px,
+      -5px
+    );
+}
+
+
+/* =====================================================
+   SECTION 08 — FINAL CTA
+===================================================== */
+
+.home-final-cta {
+  position: relative;
+
+  min-height: 600px;
+
+  display: flex;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  background: #1557ff;
+
+  color: #fff;
+}
+
+.home-final-inner {
+  position: relative;
+
+  z-index: 3;
+
+  width:
+    min(
+      1320px,
+      calc(100% - 100px)
+    );
+
+  margin: auto;
+}
+
+.home-final-inner
+  .section-label {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.7
+    );
+}
+
+.home-final-inner h2 {
+  margin:
+    25px 0 45px;
+
+  font-size:
+    clamp(
+      65px,
+      8vw,
+      125px
+    );
+
+  line-height: 0.86;
+
+  letter-spacing: -0.08em;
+
+  font-weight: 500;
+}
+
+.home-final-inner h2 span {
+  opacity: 0.65;
+}
+
+
+/* Final button */
+
+.home-final-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 35px;
+
+  padding:
+    17px 22px;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.5
+    );
+
+  border-radius: 50px;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 13px;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.home-final-button span {
+  font-size: 18px;
+}
+
+.home-final-button:hover {
+  background: #fff;
+
+  color: #1557ff;
+
+  transform:
+    translateY(-4px);
+}
+
+
+/* Final circles */
+
+.home-final-orbit {
+  position: absolute;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.16
+    );
+
+  border-radius: 50%;
+}
+
+.orbit-one {
+  width: 650px;
+  height: 650px;
+
+  right: -230px;
+  top: -180px;
+}
+
+.orbit-two {
+  width: 440px;
+  height: 440px;
+
+  right: -125px;
+  top: -75px;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1000px) {
+
+  /* HERO */
+
+  .home-hero {
+    height: 570px;
+  }
+
+  .home-hero-art {
+    width: 48vw;
+
+    max-width: 520px;
+
+    left: -30px;
+  }
+
+  .home-hero-copy {
+    right: 6%;
+
+    width: 470px;
+  }
+
+  .home-hero-title {
+    font-size: 68px;
+  }
+
+
+  /* COMMON WIDTH */
+
+  .home-stats-inner,
+  .home-story-inner,
+  .home-section-top,
+  .home-awards-grid,
+  .home-products-heading,
+  .home-products-list {
+    width:
+      calc(100% - 60px);
+  }
+
+
+  /* STATS */
+
+  .home-stats-inner {
+    grid-template-columns:
+      55% 45%;
+
+    padding:
+      45px 5% 0;
+  }
+
+  .home-stats-grid {
+    column-gap: 35px;
+
+    row-gap: 30px;
+  }
+
+  .home-stat strong {
+    font-size: 48px;
+  }
+
+  .home-stat span {
+    font-size: 12px;
+  }
+
+  .home-stats-copy {
+    padding-left: 10px;
+  }
+
+  .home-stats-copy h2 {
+    font-size: 25px;
+  }
+
+  .home-stats-copy p {
+    font-size: 10px;
+
+    max-width: 330px;
+  }
+
+  .home-crowd {
+    width: 53%;
+
+    right: -20px;
+  }
+
+
+  /* STORY */
+
+  .home-story-inner {
+    gap: 50px;
+  }
+
+
+  /* TEAM */
+
+  .home-team-grid {
+    width:
+      calc(100% - 60px);
+  }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+  /* HERO */
+
+  .home-hero {
+    height: 680px;
+
+    min-height: 680px;
+
+    max-height: none;
+  }
+
+  .home-hero-inner {
+    height: 100%;
+  }
+
+  .home-hero-copy {
+    top: 80px;
+
+    right: auto;
+
+    left: 20px;
+
+    width:
+      calc(100% - 40px);
+
+    transform: none;
+
+    text-align: left;
+  }
+
+  .home-hero-title {
+    font-size:
+      clamp(
+        48px,
+        14vw,
+        72px
+      );
+  }
+
+  .home-first-line {
+    margin-bottom: 12px;
+  }
+
+  .home-hero-description {
+    margin-top: 24px;
+
+    font-size: 15px;
+  }
+
+  .home-hero-art {
+    width: 100%;
+
+    max-width: 500px;
+
+    left: -30px;
+
+    bottom: 0;
+  }
+
+
+  /* HERO LINE */
+
+  .home-hero-bottom-line {
+    height: 7px;
+  }
+
+
+  /* STATS */
+
+  .home-stats {
+    min-height: 760px;
+
+    padding:
+      65px 0 0;
+  }
+
+  .home-stats-inner {
+    width: 100%;
+
+    min-height: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    padding:
+      0 25px;
+  }
+
+  .home-stats-grid {
+    width: 100%;
+
+    max-width: none;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    column-gap: 25px;
+
+    row-gap: 35px;
+  }
+
+  .home-stat {
+    min-height: 80px;
+  }
+
+  .home-stat strong {
+    font-size: 43px;
+  }
+
+  .home-stat span {
+    margin-top: 9px;
+
+    font-size: 12px;
+  }
+
+  .home-stats-copy {
+    width: 100%;
+
+    max-width: none;
+
+    padding:
+      55px 5px 0;
+
+    text-align: center;
+  }
+
+  .home-stats-copy h2 {
+    font-size: 26px;
+
+    line-height: 1.05;
+  }
+
+  .home-stats-copy p {
+    max-width: 330px;
+
+    margin-top: 18px;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+  }
+
+  .home-crowd {
+    width: 105%;
+
+    max-width: none;
+
+    right: -25%;
+
+    bottom: 0;
+  }
+
+
+  /* STORY */
+
+  .home-story {
+    padding: 90px 0;
+  }
+
+  .home-story-inner {
+    width:
+      calc(100% - 40px);
+
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+  }
+
+  .home-story-image {
+    min-height: 350px;
+  }
+
+  .home-compass-ring {
+    width: 300px;
+    height: 300px;
+  }
+
+  .home-story-copy h2 {
+    font-size: 54px;
+  }
+
+
+  /* AWARDS */
+
+  .home-awards {
+    padding:
+      80px 0 90px;
+  }
+
+  .home-section-top {
+    width:
+      calc(100% - 40px);
+  }
+
+  .home-awards-grid {
+    width:
+      calc(100% - 40px);
+
+    grid-template-columns: 1fr;
+  }
+
+  .home-award {
+    min-height: 220px;
+  }
+
+  .home-award h3 {
+    margin-top: 55px;
+  }
+
+
+  /* EXPERIENCE */
+
+  .home-experience {
+    min-height: 600px;
+
+    padding:
+      100px 20px;
+  }
+
+  .home-experience-content h2 {
+    font-size: 55px;
+  }
+
+  .home-decoration-left,
+  .home-decoration-right {
+    width: 260px;
+    height: 260px;
+  }
+
+  .home-decoration-left {
+    left: -190px;
+  }
+
+  .home-decoration-right {
+    right: -190px;
+  }
+
+
+  /* TEAM */
+
+  .home-team {
+    padding:
+      90px 0;
+  }
+
+  .home-team-grid {
+    width:
+      calc(100% - 40px);
+
+    grid-template-columns: 1fr;
+  }
+
+  .home-team-image {
+    height: 430px;
+  }
+
+  .home-team-link {
+    width:
+      calc(100% - 40px);
+  }
+
+
+  /* PRODUCTS */
+
+  .home-products {
+    padding:
+      100px 0;
+  }
+
+  .home-products-heading {
+    width:
+      calc(100% - 40px);
+  }
+
+  .home-products-heading h2 {
+    font-size: 58px;
+  }
+
+  .home-products-heading p {
+    margin-bottom: 50px;
+  }
+
+  .home-products-list {
+    width:
+      calc(100% - 40px);
+  }
+
+  .home-product-row {
+    grid-template-columns:
+      40px 1fr 25px;
+
+    min-height: 105px;
+  }
+
+  .home-product-row strong {
+    font-size: 27px;
+  }
+
+
+  /* FINAL CTA */
+
+  .home-final-cta {
+    min-height: 550px;
+  }
+
+  .home-final-inner {
+    width:
+      calc(100% - 40px);
+  }
+
+  .home-final-inner h2 {
+    font-size: 62px;
+  }
+
+  .orbit-one {
+    width: 450px;
+    height: 450px;
+
+    right: -260px;
+  }
+
+  .orbit-two {
+    width: 300px;
+    height: 300px;
+
+    right: -185px;
+  }
+
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+
+  .home-hero {
+    height: 620px;
+
+    min-height: 620px;
+  }
+
+  .home-hero-copy {
+    top: 70px;
+  }
+
+  .home-hero-title {
+    font-size: 46px;
+  }
+
+  .home-hero-description {
+    font-size: 14px;
+  }
+
+  .home-hero-art {
+    left: -55px;
+
+    width: 115%;
+  }
+
+
+  /* STATS */
+
+  .home-stats {
+    min-height: 700px;
+
+    padding-top: 50px;
+  }
+
+  .home-stats-grid {
+    column-gap: 18px;
+
+    row-gap: 28px;
+  }
+
+  .home-stat strong {
+    font-size: 37px;
+  }
+
+  .home-stat span {
+    font-size: 11px;
+  }
+
+  .home-stats-copy {
+    padding-top: 45px;
+  }
+
+  .home-stats-copy h2 {
+    font-size: 23px;
+  }
+
+  .home-stats-copy p {
+    font-size: 10px;
+  }
+
+  .home-crowd {
+    width: 120%;
+
+    right: -35%;
+  }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .typing-cursor {
+    animation: none;
+  }
+
+  .home-hero-art img {
+    transform: none !important;
+  }
+
+  .home-award,
+  .home-team-image img,
+  .home-product-row,
+  .text-link span,
+  .home-final-button {
+    transition: none;
+  }
+
+}
