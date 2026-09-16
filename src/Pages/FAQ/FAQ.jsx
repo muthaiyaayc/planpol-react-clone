@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import "./FAQ.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -118,10 +117,6 @@ function FAQ() {
         return;
       }
 
-      /* =====================================================
-         HERO ENTRANCE
-      ===================================================== */
-
       const heroTimeline = gsap.timeline({
         defaults: {
           ease: "power3.out",
@@ -153,10 +148,6 @@ function FAQ() {
           "-=0.5"
         );
 
-      /* =====================================================
-         HERO ORBIT MOTION
-      ===================================================== */
-
       gsap.to(heroOrbOneRef.current, {
         rotation: 360,
         duration: 30,
@@ -170,10 +161,6 @@ function FAQ() {
         repeat: -1,
         ease: "none",
       });
-
-      /* =====================================================
-         HERO ORB FLOAT
-      ===================================================== */
 
       gsap.to(heroOrbOneRef.current, {
         y: 25,
@@ -192,10 +179,6 @@ function FAQ() {
         yoyo: true,
         ease: "sine.inOut",
       });
-
-      /* =====================================================
-         HERO SCROLL PARALLAX
-      ===================================================== */
 
       gsap.to(heroContentRef.current, {
         y: 40,
@@ -221,10 +204,6 @@ function FAQ() {
         },
       });
 
-      /* =====================================================
-         FAQ HEADING
-      ===================================================== */
-
       gsap.from(headingRef.current, {
         scrollTrigger: {
           trigger: headingRef.current,
@@ -236,10 +215,6 @@ function FAQ() {
         duration: 0.9,
         ease: "power3.out",
       });
-
-      /* =====================================================
-         FAQ SECTIONS
-      ===================================================== */
 
       const sections =
         sectionsRef.current?.querySelectorAll(".faq-section");
@@ -259,10 +234,6 @@ function FAQ() {
         });
       }
 
-      /* =====================================================
-         FAQ QUESTIONS
-      ===================================================== */
-
       const questions =
         sectionsRef.current?.querySelectorAll(".faq-item");
 
@@ -281,10 +252,6 @@ function FAQ() {
           ease: "power2.out",
         });
       }
-
-      /* =====================================================
-         CTA ENTRANCE
-      ===================================================== */
 
       gsap.from(ctaRef.current, {
         scrollTrigger: {
@@ -322,10 +289,6 @@ function FAQ() {
         ease: "power3.out",
       });
 
-      /* =====================================================
-         CTA CIRCLE
-      ===================================================== */
-
       gsap.to(ctaCircleRef.current, {
         rotation: 360,
         duration: 28,
@@ -360,10 +323,6 @@ function FAQ() {
     };
   }, []);
 
-  /* =======================================================
-     ACCORDION
-  ======================================================= */
-
   const handleToggle = (index) => {
     setOpenIndex((previous) =>
       previous === index ? -1 : index
@@ -374,130 +333,143 @@ function FAQ() {
 
   return (
     <main
-      className="faq-page"
+      className="faq-page relative w-full overflow-hidden bg-white text-[#172033]"
       ref={pageRef}
     >
-      {/* =====================================================
-          HERO
-      ===================================================== */}
+      {/* HERO */}
 
-      <section className="faq-hero">
+      <section className="faq-hero relative flex min-h-[540px] items-center overflow-hidden bg-[linear-gradient(110deg,#eef7ff_0%,#f5f1ff_55%,#ffffff_100%)] px-[9%] py-[100px]">
         <div
-          className="faq-hero-content"
+          className="faq-hero-content relative z-10 max-w-[900px]"
           ref={heroContentRef}
         >
           <span
-            className="faq-label"
+            className="faq-label mb-6 block text-[14px] font-bold tracking-[2px] text-[#1769ff]"
             ref={heroLabelRef}
           >
             FAQ
           </span>
 
-          <h1 ref={heroTitleRef}>
+          <h1
+            className="text-[76px] font-bold leading-[0.98] tracking-[-3px] text-[#172033] max-[900px]:text-[62px] max-[650px]:text-[48px] max-[650px]:tracking-[-2px]"
+            ref={heroTitleRef}
+          >
             Questions?
             <br />
-            <span>We've got answers.</span>
+            <span className="text-[#1769ff]">We've got answers.</span>
           </h1>
 
-          <p ref={heroTextRef}>
-            Everything you need to know about
-            PlanPol, our technology and our
-            political intelligence solutions.
+          <p
+            className="mt-8 max-w-[620px] text-[21px] leading-[1.6] text-[#596579] max-[650px]:text-[18px]"
+            ref={heroTextRef}
+          >
+            Everything you need to know about PlanPol, our technology and our political intelligence solutions.
           </p>
         </div>
 
         <div
           ref={heroOrbOneRef}
-          className="faq-hero-orb faq-hero-orb-one"
+          className="faq-hero-orb faq-hero-orb-one pointer-events-none absolute right-[-115px] top-[-150px] h-[430px] w-[430px] rounded-full border border-[rgba(23,105,255,0.13)] max-[650px]:right-[-150px] max-[650px]:top-[-60px] max-[650px]:h-[280px] max-[650px]:w-[280px] before:absolute before:inset-[58px] before:rounded-full before:border before:border-[rgba(23,105,255,0.1)] after:absolute after:bottom-[75px] after:right-[80px] after:h-[9px] after:w-[9px] after:rounded-full after:bg-[#1769ff] after:shadow-[0_0_20px_rgba(23,105,255,0.35)]"
           aria-hidden="true"
         />
 
         <div
           ref={heroOrbTwoRef}
-          className="faq-hero-orb faq-hero-orb-two"
+          className="faq-hero-orb faq-hero-orb-two pointer-events-none absolute bottom-[-90px] right-[19%] h-[150px] w-[150px] rounded-full border border-[rgba(23,105,255,0.1)]"
           aria-hidden="true"
         />
       </section>
 
-      {/* =====================================================
-          FAQ CONTENT
-      ===================================================== */}
+      {/* FAQ CONTENT */}
 
-      <section className="faq-content">
+      <section className="faq-content bg-white px-[9%] py-[110px] max-[650px]:px-[25px] max-[650px]:py-[80px]">
         <div
-          className="faq-heading"
+          className="faq-heading mb-20 max-[650px]:mb-[50px]"
           ref={headingRef}
         >
-          <span>
+          <span className="text-[14px] font-bold tracking-[2px] text-[#1769ff]">
             FREQUENTLY ASKED QUESTIONS
           </span>
 
-          <h2>
+          <h2 className="mt-[18px] text-[52px] font-bold leading-[1.08] tracking-[-2px] text-[#172033] max-[650px]:text-[38px]">
             Find the answers
             <br />
             you're looking for.
           </h2>
         </div>
 
-        <div
-          className="faq-sections"
-          ref={sectionsRef}
-        >
+        <div className="faq-sections" ref={sectionsRef}>
           {faqSections.map((section) => (
             <div
-              className="faq-section"
+              className="faq-section grid grid-cols-[260px_minmax(0,1fr)] gap-[60px] border-t border-[#dfe5ee] py-[55px] last:border-b max-[1000px]:grid-cols-[200px_minmax(0,1fr)] max-[1000px]:gap-10 max-[900px]:grid-cols-1 max-[900px]:gap-[25px] max-[900px]:py-[45px] max-[650px]:py-10"
               key={section.title}
             >
-              <div className="faq-section-title">
+              <div className="faq-section-title text-[16px] font-bold leading-[1.4] text-[#1769ff] max-[900px]:mb-[5px]">
                 {section.title}
               </div>
 
-              <div className="faq-questions">
+              <div className="faq-questions w-full">
                 {section.questions.map((item) => {
                   const currentIndex = questionCounter++;
-
-                  const isOpen =
-                    openIndex === currentIndex;
+                  const isOpen = openIndex === currentIndex;
 
                   return (
                     <div
-                      className={`faq-item ${
-                        isOpen
-                          ? "faq-item-open"
-                          : ""
+                      className={`faq-item relative border-b border-[#e5e9ef] ${
+                        isOpen ? "faq-item-open" : ""
                       }`}
                       key={item.question}
                     >
                       <button
                         type="button"
-                        className="faq-question"
-                        onClick={() =>
-                          handleToggle(
-                            currentIndex
-                          )
-                        }
+                        className="faq-question flex w-full items-center justify-between gap-[30px] border-0 bg-transparent py-[25px] text-left font-inherit text-[19px] font-semibold text-[#172033] outline-none max-[650px]:gap-5 max-[650px]:py-[22px] max-[650px]:text-[17px]"
+                        onClick={() => handleToggle(currentIndex)}
                         aria-expanded={isOpen}
                         aria-controls={`faq-answer-${currentIndex}`}
                       >
-                        <span className="faq-question-text">
+                        <span className="faq-question-text relative leading-[1.45] transition-all duration-[250ms] ease-in-out hover:translate-x-1 hover:text-[#1769ff]">
                           {item.question}
                         </span>
 
                         <span
-                          className="faq-icon"
+                          className={`faq-icon relative flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border border-[#d9e0ea] text-[#1769ff] transition-all duration-300 ease-in-out max-[650px]:h-8 max-[650px]:w-8 ${
+                            isOpen
+                              ? "rotate-180 border-[#1769ff] bg-[#1769ff] text-white"
+                              : ""
+                          }`}
                           aria-hidden="true"
                         >
-                          <span className="faq-icon-horizontal" />
-                          <span className="faq-icon-vertical" />
+                          <span className="faq-icon-horizontal absolute h-px w-3 bg-current transition-all duration-300 ease-in-out" />
+                          <span
+                            className={`faq-icon-vertical absolute h-px w-3 rotate-90 bg-current transition-all duration-300 ease-in-out ${
+                              isOpen
+                                ? "scale-x-0 opacity-0"
+                                : ""
+                            }`}
+                          />
                         </span>
                       </button>
 
                       <div
                         id={`faq-answer-${currentIndex}`}
-                        className="faq-answer"
+                        className={`faq-answer grid transition-[grid-template-rows] duration-[420ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                          isOpen
+                            ? "grid-rows-[1fr]"
+                            : "grid-rows-[0fr]"
+                        }`}
                         aria-hidden={!isOpen}
                       >
-                        <p>{item.answer}</p>
+                        <div className="min-h-0 overflow-hidden">
+                          <p
+                            className={`m-0 overflow-hidden text-[17px] leading-[1.7] text-[#596579] transition-all duration-[350ms] ease-in-out max-[650px]:text-[16px] max-[650px]:leading-[1.65] ${
+                              isOpen
+                                ? "translate-y-0 pb-7 opacity-100"
+                                : "-translate-y-2 opacity-0"
+                            }`}
+                          >
+                            {item.answer}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   );
@@ -508,23 +480,21 @@ function FAQ() {
         </div>
       </section>
 
-      {/* =====================================================
-          CTA
-      ===================================================== */}
+      {/* CTA */}
 
       <section
-        className="faq-cta"
+        className="faq-cta relative flex min-h-[390px] items-center overflow-hidden bg-[#1769ff] px-[9%] py-20 max-[650px]:min-h-[330px] max-[650px]:px-[25px] max-[650px]:py-[70px]"
         ref={ctaRef}
       >
         <div
-          className="faq-cta-content"
+          className="faq-cta-content relative z-10"
           ref={ctaContentRef}
         >
-          <span>
+          <span className="text-[13px] font-bold tracking-[2px] text-[rgba(255,255,255,0.75)]">
             STILL HAVE QUESTIONS?
           </span>
 
-          <h2>
+          <h2 className="mt-[18px] text-[56px] font-bold leading-[1.05] tracking-[-2px] text-white max-[650px]:text-[42px] max-[650px]:tracking-[-1.5px]">
             Let's talk about
             <br />
             your political journey.
@@ -532,22 +502,24 @@ function FAQ() {
 
           <a
             href="mailto:admin@planpol.com"
-            className="faq-cta-button"
+            className="faq-cta-button mt-8 inline-flex items-center gap-[13px] rounded-[35px] bg-white px-7 py-4 text-[16px] font-bold text-[#1769ff] no-underline transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(0,0,0,0.14)]"
           >
             <span>Contact us</span>
 
-            <span className="faq-cta-arrow">
+            <span className="faq-cta-arrow text-[20px] leading-none transition-transform duration-300 ease-in-out">
               →
             </span>
           </a>
         </div>
 
         <div
-          className="faq-cta-circle"
+          className="faq-cta-circle absolute right-[10%] top-1/2 flex h-[230px] w-[230px] -translate-y-1/2 items-center justify-center rounded-full border border-[rgba(255,255,255,0.3)] max-[1000px]:right-[5%] max-[1000px]:h-[190px] max-[1000px]:w-[190px] max-[900px]:opacity-45 max-[700px]:hidden"
           ref={ctaCircleRef}
           aria-hidden="true"
         >
-          <span>PLANPOL</span>
+          <span className="relative z-10 text-[11px] font-bold tracking-[2px] text-[rgba(255,255,255,0.7)]">
+            PLANPOL
+          </span>
         </div>
       </section>
     </main>
