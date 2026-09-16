@@ -7,6 +7,11 @@ gsap.registerPlugin(ScrollTrigger);
 function OurStory() {
   const pageRef = useRef(null);
 
+  const intelligenceRef = useRef(null);
+  const compassLeftRef = useRef(null);
+  const compassRightRef = useRef(null);
+  const intelligenceContentRef = useRef(null);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       const heroTimeline = gsap.timeline({
@@ -38,37 +43,177 @@ function OurStory() {
         yoyo: true,
       });
 
-      gsap.fromTo(".our-story-intro-left", { x: -55, opacity: 0 }, { x: 0, opacity: 1, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".our-story-intro", start: "top 75%", once: true } });
+      gsap.fromTo(
+        ".our-story-intro-left",
+        { x: -55, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".our-story-intro",
+            start: "top 75%",
+            once: true,
+          },
+        }
+      );
 
-      gsap.fromTo(".our-story-intro-right", { x: 55, opacity: 0 }, { x: 0, opacity: 1, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".our-story-intro", start: "top 75%", once: true } });
+      gsap.fromTo(
+        ".our-story-intro-right",
+        { x: 55, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".our-story-intro",
+            start: "top 75%",
+            once: true,
+          },
+        }
+      );
 
-      gsap.fromTo(".our-story-intro-line", { scaleY: 0, transformOrigin: "top" }, { scaleY: 1, duration: 1.2, ease: "power3.inOut", scrollTrigger: { trigger: ".our-story-intro", start: "top 75%", once: true } });
+      gsap.fromTo(
+        ".our-story-intro-line",
+        { scaleY: 0, transformOrigin: "top" },
+        {
+          scaleY: 1,
+          duration: 1.2,
+          ease: "power3.inOut",
+          scrollTrigger: {
+            trigger: ".our-story-intro",
+            start: "top 75%",
+            once: true,
+          },
+        }
+      );
 
-      gsap.fromTo(".our-story-people-heading", { y: 55, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".our-story-people-heading", start: "top 82%", once: true } });
+      gsap.fromTo(
+        ".our-story-people-heading",
+        { y: 55, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".our-story-people-heading",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
 
-      gsap.fromTo(".our-story-person-card", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, stagger: 0.14, ease: "power3.out", scrollTrigger: { trigger: ".our-story-people-grid", start: "top 78%", once: true } });
+      gsap.fromTo(
+        ".our-story-person-card",
+        { y: 70, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.9,
+          stagger: 0.14,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".our-story-people-grid",
+            start: "top 78%",
+            once: true,
+          },
+        }
+      );
 
-      gsap.fromTo(".our-story-intelligence-image", { x: -80, opacity: 0, rotate: -8 }, { x: 0, opacity: 1, rotate: 0, duration: 1.2, ease: "power3.out", scrollTrigger: { trigger: ".our-story-intelligence", start: "top 75%", once: true } });
+      /* =========================================================
+         COMPASS SPLIT ANIMATION
+      ========================================================= */
 
-      gsap.fromTo(".our-story-intelligence-content", { x: 70, opacity: 0 }, { x: 0, opacity: 1, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: ".our-story-intelligence", start: "top 75%", once: true } });
+      gsap.set(compassLeftRef.current, {
+        xPercent: 0,
+      });
 
-      gsap.to(".our-story-intelligence-image img", {
-        y: -16,
-        rotate: 3,
+      gsap.set(compassRightRef.current, {
+        xPercent: 0,
+      });
+
+      gsap.set(intelligenceContentRef.current, {
+        opacity: 0,
+        y: 50,
+        scale: 0.96,
+      });
+
+      const compassTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: intelligenceRef.current,
+          start: "top 75%",
+          end: "bottom 45%",
+          scrub: 1.2,
+        },
+      });
+
+      compassTimeline
+        .to(
+          compassLeftRef.current,
+          {
+            xPercent: -100,
+            duration: 1,
+            ease: "power3.inOut",
+          },
+          0
+        )
+        .to(
+          compassRightRef.current,
+          {
+            xPercent: 100,
+            duration: 1,
+            ease: "power3.inOut",
+          },
+          0
+        )
+        .to(
+          intelligenceContentRef.current,
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "power3.out",
+          },
+          0.45
+        );
+
+      /* Compass subtle floating animation */
+
+      gsap.to(".our-story-compass-left-image", {
+        y: -10,
         duration: 3.5,
         ease: "sine.inOut",
         repeat: -1,
         yoyo: true,
       });
 
-      gsap.to(".our-story-image-ring", {
-        rotate: 360,
-        duration: 24,
-        ease: "none",
+      gsap.to(".our-story-compass-right-image", {
+        y: -10,
+        duration: 3.5,
+        ease: "sine.inOut",
         repeat: -1,
+        yoyo: true,
       });
 
-      gsap.fromTo(".our-story-vision-content", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: ".our-story-vision", start: "top 75%", once: true } });
+      gsap.fromTo(
+        ".our-story-vision-content",
+        { y: 70, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".our-story-vision",
+            start: "top 75%",
+            once: true,
+          },
+        }
+      );
 
       gsap.to(".our-story-vision-glow", {
         scale: 1.15,
@@ -96,7 +241,10 @@ function OurStory() {
   return (
     <main ref={pageRef} className="w-full overflow-hidden bg-white text-[#172033]">
 
-      {/* HERO */}
+      {/* =========================================================
+          HERO
+      ========================================================= */}
+
       <section className="relative flex min-h-[690px] w-full items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_20%_20%,rgba(78,168,255,0.18),transparent_30%),radial-gradient(circle_at_80%_70%,rgba(151,111,255,0.14),transparent_30%),linear-gradient(115deg,#e7f8fd_0%,#edf5ff_50%,#f3edff_100%)] px-[8%] py-[110px] pb-[90px] max-[1000px]:min-h-[600px] max-[1000px]:px-[30px] max-[1000px]:py-[100px] max-[1000px]:pb-[80px] max-[600px]:min-h-[560px] max-[600px]:px-[20px] max-[600px]:py-[90px] max-[600px]:pb-[65px]">
 
         <div className="our-story-hero-grid pointer-events-none absolute -inset-[10%] opacity-[0.35] bg-[linear-gradient(rgba(23,105,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(23,105,255,0.08)_1px,transparent_1px)] bg-[length:75px_75px] [transform:perspective(700px)_rotateX(55deg)_scale(1.5)] [transform-origin:center_bottom] max-[600px]:bg-[length:45px_45px] max-[600px]:[transform:perspective(500px)_rotateX(55deg)_scale(1.8)]" />
@@ -140,7 +288,10 @@ function OurStory() {
         </div>
       </section>
 
-      {/* INTRODUCTION */}
+      {/* =========================================================
+          INTRODUCTION
+      ========================================================= */}
+
       <section className="our-story-intro grid w-full grid-cols-[0.95fr_1.05fr] gap-[100px] bg-white px-[10%] py-[145px] max-[1000px]:grid-cols-1 max-[1000px]:gap-[55px] max-[1000px]:px-[40px] max-[1000px]:py-[100px] max-[600px]:gap-[40px] max-[600px]:px-[22px] max-[600px]:py-[75px]">
 
         <div className="our-story-intro-left flex flex-col justify-center">
@@ -172,7 +323,10 @@ function OurStory() {
         </div>
       </section>
 
-      {/* PEOPLE */}
+      {/* =========================================================
+          PEOPLE
+      ========================================================= */}
+
       <section className="relative w-full overflow-hidden bg-[#f7f9ff] px-[8%] py-[135px] max-[1000px]:px-[30px] max-[1000px]:py-[100px] max-[600px]:px-[20px] max-[600px]:py-[80px]">
 
         <div className="absolute right-[8%] top-[70px] flex gap-2 opacity-45 max-[600px]:right-[20px] max-[600px]:top-[35px]">
@@ -216,6 +370,7 @@ function OurStory() {
             </div>
 
             <div>
+
               <h3 className="m-[0_0_20px] text-[30px] leading-[1.08] tracking-[-1px] text-[#172033] max-[600px]:text-[28px]">
                 Grassroots
                 <br />
@@ -225,6 +380,7 @@ function OurStory() {
               <p className="m-0 max-w-[320px] text-[15px] leading-[1.75] text-[#68748a] max-[600px]:text-[14px]">
                 Empowering grassroots organisers with data and technology to understand their communities and build stronger movements.
               </p>
+
             </div>
 
           </article>
@@ -244,6 +400,7 @@ function OurStory() {
             </div>
 
             <div>
+
               <h3 className="m-[0_0_20px] text-[30px] leading-[1.08] tracking-[-1px] text-[#172033] max-[600px]:text-[28px]">
                 Political
                 <br />
@@ -253,11 +410,12 @@ function OurStory() {
               <p className="m-0 max-w-[320px] text-[15px] leading-[1.75] text-[#68748a] max-[600px]:text-[14px]">
                 Helping political aspirants understand their constituency, build credibility, and create a path towards political success.
               </p>
+
             </div>
 
           </article>
 
-          <article className="our-story-person-card group relative flex min-h-[365px] flex-col justify-between overflow-hidden rounded-[4px] border border-[rgba(23,105,255,0.08)] bg-white p-8 transition-all duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] before:absolute before:bottom-0 before:left-0 before:h-[3px] before:w-full before:origin-left before:scale-x-0 before:bg-[#1769ff] before:transition-transform before:duration-[450ms] before:duration-[450ms] before:content-[''] hover:-translate-y-3 hover:border-[rgba(23,105,255,0.16)] hover:shadow-[0_25px_60px_rgba(23,105,255,0.09)] hover:before:scale-x-100 max-[1000px]:min-h-[330px] max-[600px]:min-h-[330px] max-[600px]:p-[27px]">
+          <article className="our-story-person-card group relative flex min-h-[365px] flex-col justify-between overflow-hidden rounded-[4px] border border-[rgba(23,105,255,0.08)] bg-white p-8 transition-all duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] before:absolute before:bottom-0 before:left-0 before:h-[3px] before:w-full before:origin-left before:scale-x-0 before:bg-[#1769ff] before:transition-transform before:duration-[450ms] before:content-[''] hover:-translate-y-3 hover:border-[rgba(23,105,255,0.16)] hover:shadow-[0_25px_60px_rgba(23,105,255,0.09)] hover:before:scale-x-100 max-[1000px]:min-h-[330px] max-[600px]:min-h-[330px] max-[600px]:p-[27px]">
 
             <div className="flex items-center justify-between">
 
@@ -272,6 +430,7 @@ function OurStory() {
             </div>
 
             <div>
+
               <h3 className="m-[0_0_20px] text-[30px] leading-[1.08] tracking-[-1px] text-[#172033] max-[600px]:text-[28px]">
                 Citizen
               </h3>
@@ -279,6 +438,7 @@ function OurStory() {
               <p className="m-0 max-w-[320px] text-[15px] leading-[1.75] text-[#68748a] max-[600px]:text-[14px]">
                 Making politics easier to understand and helping citizens participate meaningfully in the democratic process.
               </p>
+
             </div>
 
           </article>
@@ -286,48 +446,82 @@ function OurStory() {
         </div>
       </section>
 
-      {/* HYPERLOCAL INTELLIGENCE */}
-      <section className="our-story-intelligence relative flex min-h-[690px] w-full items-center overflow-hidden bg-white px-[8%] py-[110px] max-[1000px]:min-h-0 max-[1000px]:flex-col max-[1000px]:px-[35px] max-[1000px]:py-[90px] max-[600px]:px-[20px] max-[600px]:py-[75px] max-[600px]:pb-[85px]">
+      {/* =========================================================
+          DATA + INTELLIGENCE
+          COMPASS SPLITS LEFT + RIGHT
+      ========================================================= */}
 
-        <div className="pointer-events-none absolute left-[-260px] top-1/2 h-[650px] w-[650px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(23,105,255,0.07),rgba(23,105,255,0)_68%)]" />
+      <section ref={intelligenceRef} className="our-story-intelligence relative flex min-h-[720px] w-full items-center justify-center overflow-hidden bg-white px-[5%] py-[100px] max-[1000px]:min-h-[800px] max-[1000px]:px-[25px] max-[700px]:min-h-[850px]">
 
-        <div className="our-story-intelligence-image relative flex min-h-[500px] w-[48%] items-center justify-center max-[1000px]:mb-[35px] max-[1000px]:min-h-[430px] max-[1000px]:w-full max-[600px]:mb-5 max-[600px]:min-h-[320px]">
+        {/* LEFT BACKGROUND GLOW */}
 
-          <div className="our-story-image-ring absolute h-[400px] w-[400px] rounded-full border border-[rgba(23,105,255,0.1)] before:absolute before:inset-[35px] before:rounded-full before:border before:border-dashed before:border-[rgba(23,105,255,0.09)] after:absolute after:inset-[75px] after:rounded-full after:border after:border-dashed after:border-[rgba(23,105,255,0.09)] max-[600px]:h-[280px] max-[600px]:w-[280px]" />
+        <div className="pointer-events-none absolute left-[-300px] top-1/2 h-[650px] w-[650px] -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(23,105,255,0.08),rgba(23,105,255,0)_68%)]" />
 
-          <img src="/compass.png" alt="PlanPol intelligence" className="relative z-[2] block w-[min(80%,510px)] object-contain drop-shadow-[0_25px_35px_rgba(23,105,255,0.08)] transition-[filter,transform] duration-500 hover:drop-shadow-[0_30px_45px_rgba(23,105,255,0.15)] max-[600px]:w-[90%]" />
+        {/* =====================================================
+            CENTER CONTENT
+        ===================================================== */}
 
-        </div>
+        <div ref={intelligenceContentRef} className="our-story-intelligence-content relative z-[2] mx-auto w-[520px] max-w-[90%] text-center">
 
-        <div className="our-story-intelligence-content relative z-[3] w-[52%] pl-[50px] max-[1000px]:w-full max-[1000px]:pl-0 max-[1000px]:text-center">
-
-          <div className="mb-5 text-[12px] font-extrabold uppercase tracking-[2.5px] text-[#1769ff] max-[600px]:mb-[15px] max-[600px]:text-[10px] max-[600px]:tracking-[2px]">
-            DATA + INTELLIGENCE
+          <div className="mb-[22px] text-[12px] font-extrabold uppercase tracking-[3px] text-[#1769ff] max-[600px]:text-[10px]">
+            DATA + TECHNOLOGY
           </div>
 
-          <h2 className="m-[0_0_30px] text-[clamp(42px,4.3vw,62px)] leading-[1.03] tracking-[-2.7px] text-[#172033] max-[600px]:text-[36px] max-[600px]:tracking-[-1.5px]">
-            From households
+          <h2 className="m-0 text-[clamp(44px,5vw,70px)] leading-[0.98] tracking-[-3px] text-[#172033] max-[600px]:text-[38px] max-[600px]:tracking-[-1.5px]">
+            Making
             <br />
-            to <span className="text-[#1769ff]">constituencies.</span>
+            complexity
+            <br />
+            <span className="text-[#1769ff]">
+              simple.
+            </span>
           </h2>
 
-          <p className="m-[0_0_22px] max-w-[600px] text-[18px] leading-[1.75] text-[#596579] max-[1000px]:mx-auto max-[600px]:text-[16px] max-[600px]:leading-[1.7]">
-            PlanPol brings household-level intelligence and hyperlocal data together to create a deeper understanding of political landscapes.
+          <p className="mx-auto mt-[42px] max-w-[510px] text-[18px] leading-[1.75] text-[#596579] max-[700px]:mt-[30px] max-[600px]:text-[15px] max-[600px]:leading-[1.7]">
+            We combine political experience with technology, data and research to uncover what really matters to people.
           </p>
 
-          <p className="m-[0_0_22px] max-w-[600px] text-[18px] leading-[1.75] text-[#596579] max-[1000px]:mx-auto max-[600px]:text-[16px] max-[600px]:leading-[1.7]">
-            Our technology transforms complex data into actionable intelligence, helping political leaders make better decisions.
-          </p>
+          <a href="/our-story" className="mt-[38px] inline-flex items-center gap-[14px] text-[14px] font-semibold text-[#111] no-underline transition duration-300 hover:translate-x-[5px]">
+            Discover our story
+            <span className="text-[20px] text-[#1769ff]">
+              ↗
+            </span>
+          </a>
 
-          <div className="mt-[18px] inline-flex items-center gap-2.5 rounded-full border border-[#e5ebf5] px-[15px] py-2.5 text-[10px] font-extrabold tracking-[1.5px] text-[#657188] max-[1000px]:mx-auto max-[600px]:text-[8px] max-[600px]:tracking-[1.2px]">
-            <span className="h-[6px] w-[6px] rounded-full bg-[#1769ff] shadow-[0_0_0_4px_rgba(23,105,255,0.08)]" />
-            HYPERLOCAL INTELLIGENCE
+        </div>
+
+        {/* =====================================================
+            COMPASS SPLIT WRAPPER
+
+            Both halves overlap in the center.
+        ===================================================== */}
+
+        <div className="pointer-events-none absolute left-1/2 top-1/2 z-[4] h-[560px] w-[560px] -translate-x-1/2 -translate-y-1/2 max-[900px]:h-[500px] max-[900px]:w-[500px] max-[700px]:h-[400px] max-[700px]:w-[400px] max-[500px]:h-[340px] max-[500px]:w-[340px]">
+
+          {/* LEFT HALF */}
+
+          <div ref={compassLeftRef} className="absolute left-0 top-0 h-full w-1/2 overflow-hidden">
+
+            <img src="/compass.png" alt="PlanPol intelligence compass" className="our-story-compass-left-image absolute left-0 top-0 h-full w-[200%] max-w-none object-contain" />
+
+          </div>
+
+          {/* RIGHT HALF */}
+
+          <div ref={compassRightRef} className="absolute right-0 top-0 h-full w-1/2 overflow-hidden">
+
+            <img src="/compass.png" alt="PlanPol intelligence compass" className="our-story-compass-right-image absolute right-0 top-0 h-full w-[200%] max-w-none object-contain" />
+
           </div>
 
         </div>
+
       </section>
 
-      {/* VISION */}
+      {/* =========================================================
+          VISION
+      ========================================================= */}
+
       <section className="our-story-vision relative flex min-h-[650px] w-full items-center justify-center overflow-hidden bg-[#1769ff] px-[8%] py-[125px] text-center text-white max-[1000px]:px-[30px] max-[1000px]:py-[100px] max-[600px]:min-h-[580px] max-[600px]:px-[20px] max-[600px]:py-[80px]">
 
         <div className="our-story-vision-glow pointer-events-none absolute left-1/2 top-1/2 h-[650px] w-[650px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.18),rgba(255,255,255,0)_68%)] opacity-40" />
@@ -343,7 +537,9 @@ function OurStory() {
           <h2 className="m-[0_0_32px] text-[clamp(46px,5.5vw,72px)] leading-[1.02] tracking-[-3px] text-white max-[600px]:text-[38px] max-[600px]:tracking-[-1.5px]">
             Decentralising
             <br />
-            <span className="text-[#dce8ff]">political opportunity.</span>
+            <span className="text-[#dce8ff]">
+              political opportunity.
+            </span>
           </h2>
 
           <p className="mx-auto mb-5 max-w-[700px] text-[18px] leading-[1.75] text-[rgba(255,255,255,0.84)] max-[600px]:text-[15px] max-[600px]:leading-[1.7]">
@@ -356,9 +552,13 @@ function OurStory() {
 
           <div className="mx-auto mt-[75px] flex max-w-[780px] items-center justify-between border-t border-[rgba(255,255,255,0.2)] pt-[22px] text-[9px] font-extrabold tracking-[2px] text-[rgba(255,255,255,0.62)] max-[600px]:mt-[55px] max-[600px]:flex-col max-[600px]:gap-3 max-[600px]:text-[8px]">
 
-            <span>PLANPOL</span>
+            <span>
+              PLANPOL
+            </span>
 
-            <span>POLITICS × DATA × TECHNOLOGY</span>
+            <span>
+              POLITICS × DATA × TECHNOLOGY
+            </span>
 
           </div>
 

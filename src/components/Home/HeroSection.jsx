@@ -85,41 +85,45 @@ function HeroSection() {
   }, []);
 
   return (
-    <section ref={heroRef} className="relative h-[calc(100vh-82px)] min-h-[500px] max-h-[620px] w-full overflow-hidden bg-[linear-gradient(105deg,#edf5ff_0%,#e7f0ff_42%,#e8e9ff_70%,#f0e7ff_100%)] max-[1000px]:h-[570px] max-[700px]:h-[680px] max-[700px]:max-h-none max-[700px]:min-h-0 max-[400px]:h-[620px]">
+    <section ref={heroRef} className="relative h-[680px] min-h-[680px] w-full overflow-hidden bg-[linear-gradient(105deg,#edf5ff_0%,#e7f0ff_42%,#e8e9ff_70%,#f0e7ff_100%)] max-[1000px]:h-[650px] max-[1000px]:min-h-[650px] max-[700px]:h-[680px] max-[700px]:min-h-[680px] max-[400px]:h-[650px] max-[400px]:min-h-[650px]">
 
       {/* BACKGROUND CIRCLE */}
+
       <div className="pointer-events-none absolute right-[-380px] top-[-350px] z-0 h-[720px] w-[720px] rounded-full border border-[rgba(21,87,255,0.08)]"></div>
 
       <div className="relative z-[2] h-full w-full">
 
         {/* SPEAKER IMAGE */}
-        <div ref={artRef} className="pointer-events-none absolute bottom-0 left-[-10px] z-[1] flex w-[46vw] max-w-[590px] items-end max-[1000px]:left-[-30px] max-[1000px]:w-[48vw] max-[1000px]:max-w-[520px] max-[700px]:left-[-30px] max-[700px]:w-full max-[700px]:max-w-[500px] max-[400px]:left-[-55px] max-[400px]:w-[115%]">
+
+        <div ref={artRef} className="pointer-events-none absolute bottom-0 left-0 z-[1] flex w-[39vw] max-w-[650px] items-end max-[1200px]:w-[42vw] max-[1000px]:left-[-20px] max-[1000px]:w-[45vw] max-[700px]:left-[-30px] max-[700px]:w-[80%] max-[500px]:left-[-45px] max-[500px]:w-[100%]">
 
           <img src="/speaker.png" alt="Speaker" className="block w-full object-contain object-bottom-left will-change-transform" />
 
         </div>
 
         {/* HERO CONTENT */}
-        <div ref={copyRef} className="absolute right-[10.5%] top-1/2 z-[5] w-[520px] -translate-y-[43%] text-left max-[1000px]:right-[6%] max-[1000px]:w-[470px] max-[1000px]:translate-y-[-43%] max-[700px]:left-[20px] max-[700px]:right-auto max-[700px]:top-[80px] max-[700px]:w-[calc(100%-40px)] max-[700px]:translate-y-0 max-[400px]:left-[20px] max-[400px]:top-[70px] max-[400px]:w-[calc(100%-40px)]">
 
-          <div ref={titleLinesRef} className="font-[Arial,Helvetica,sans-serif] text-[clamp(58px,5.9vw,86px)] font-medium leading-[0.96] tracking-[-0.055em] max-[1000px]:text-[68px] max-[700px]:text-[clamp(48px,14vw,72px)] max-[400px]:text-[46px]">
+        <div ref={copyRef} className="absolute right-[12%] top-1/2 z-[5] w-[560px] -translate-y-[43%] text-left max-[1400px]:right-[9%] max-[1200px]:right-[7%] max-[1200px]:w-[520px] max-[1000px]:right-[5%] max-[1000px]:w-[480px] max-[700px]:left-[20px] max-[700px]:right-auto max-[700px]:top-[75px] max-[700px]:w-[calc(100%-40px)] max-[700px]:translate-y-0 max-[500px]:top-[65px]">
 
-            <span className="block mb-[16px] text-[0.62em] font-normal leading-none tracking-[-0.035em] text-[#111] max-[700px]:mb-[12px]">
+          <div ref={titleLinesRef} className="font-[Arial,Helvetica,sans-serif] text-[clamp(58px,5.4vw,82px)] font-medium leading-[0.88] tracking-[-0.055em] max-[1200px]:text-[68px] max-[1000px]:text-[62px] max-[700px]:text-[clamp(48px,13vw,72px)] max-[500px]:text-[46px]">
+
+            <span className="block text-[0.62em] font-normal leading-none tracking-[-0.035em] text-[#111]">
               World's first
             </span>
 
-            <span className="block font-bold tracking-[-0.065em]">
+            <span className="block font-bold tracking-[-0.065em] text-[#1769ff]">
               AI Powered
             </span>
 
-            <span className="block font-bold tracking-[-0.065em]">
+            <span className="block font-bold tracking-[-0.065em] text-[#1769ff]">
               PoliTech
             </span>
 
           </div>
 
           {/* DESCRIPTION */}
-          <p ref={descriptionRef} className="mt-[27px] ml-[4px] text-[17px] font-normal leading-[1.4] text-[#222] max-[700px]:mt-[24px] max-[700px]:text-[15px] max-[400px]:text-[14px]">
+
+          <p ref={descriptionRef} className="ml-[4px] mt-[30px] text-[17px] font-normal leading-[1.4] text-[#222] max-[1000px]:text-[16px] max-[700px]:mt-[24px] max-[700px]:text-[15px] max-[500px]:mt-[20px] max-[500px]:text-[14px]">
             We make data work for{" "}
             <span className="font-medium text-[#1557ff]">
               {typedWord}
@@ -130,6 +134,7 @@ function HeroSection() {
           </p>
 
           {/* BUTTON */}
+
           <div ref={buttonRef} className="mt-[30px]">
             <a href="/our-story" className="inline-flex items-center gap-[15px] text-[13px] font-semibold text-[#111] no-underline transition duration-300 hover:translate-x-[4px] hover:translate-y-[-4px]">
               Discover more
@@ -144,6 +149,7 @@ function HeroSection() {
       </div>
 
       {/* BLUE BOTTOM LINE */}
+
       <div className="absolute bottom-0 left-0 right-0 z-[10] h-[8px] bg-[#1557ff] max-[700px]:h-[7px]"></div>
 
     </section>
