@@ -135,14 +135,14 @@ function HeroSection() {
 
           {/* BUTTON */}
 
-          <div ref={buttonRef} className="mt-[30px]">
+          {/* <div ref={buttonRef} className="mt-[30px]">
             <a href="/our-story" className="inline-flex items-center gap-[15px] text-[13px] font-semibold text-[#111] no-underline transition duration-300 hover:translate-x-[4px] hover:translate-y-[-4px]">
               Discover more
               <span className="text-[18px] text-[#1557ff]">
                 ↗
               </span>
             </a>
-          </div>
+          </div> */}
 
         </div>
 

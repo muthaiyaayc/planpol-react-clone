@@ -1,54 +1,177 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function StorySection() {
+  const sectionRef = useRef(null);
+  const compassLeftRef = useRef(null);
+  const compassRightRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      /* =========================
+         INITIAL STATE
+      ========================= */
+
+      gsap.set(compassLeftRef.current, {
+        x: 0,
+      });
+
+      gsap.set(compassRightRef.current, {
+        x: 0,
+      });
+
+      gsap.set(contentRef.current, {
+        opacity: 0,
+        scale: 0.85,
+        y: 30,
+      });
+
+      /* =========================
+         COMPASS SPLIT + CONTENT REVEAL
+      ========================= */
+
+      const splitTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 75%",
+          end: "bottom 35%",
+          scrub: 1,
+        },
+      });
+
+      splitTimeline
+        .to(
+          compassLeftRef.current,
+          {
+            x: "-38vw",
+            duration: 1,
+            ease: "power3.inOut",
+          },
+          0
+        )
+        .to(
+          compassRightRef.current,
+          {
+            x: "38vw",
+            duration: 1,
+            ease: "power3.inOut",
+          },
+          0
+        )
+        .to(
+          contentRef.current,
+          {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+          },
+          0.25
+        );
+
+      /* =========================
+         COMPASS FLOATING ANIMATION
+      ========================= */
+
+      gsap.to(".home-compass-left-image", {
+        y: -8,
+        duration: 3,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+
+      gsap.to(".home-compass-right-image", {
+        y: -8,
+        duration: 3,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+
+      /* =========================
+         CONTENT FLOAT / REVEAL
+      ========================= */
+
+      gsap.to(".home-story-copy", {
+        y: -5,
+        duration: 3.5,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+
+      ScrollTrigger.refresh();
+    }, sectionRef);
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
   return (
-    <section className="bg-white py-40 max-[700px]:py-[90px]">
-      <div className="mx-auto grid w-[min(1320px,calc(100%-100px))] grid-cols-2 items-center gap-[100px] max-[1000px]:w-[calc(100%-60px)] max-[1000px]:gap-[50px] max-[700px]:w-[calc(100%-40px)] max-[700px]:grid-cols-1 max-[700px]:gap-[55px]">
+    <section ref={sectionRef} className="relative flex min-h-[760px] w-full items-center justify-center overflow-hidden bg-white max-[1000px]:min-h-[650px] max-[700px]:min-h-[720px]">
 
-        {/* COMPASS IMAGE */}
-        <div className="relative flex min-h-[540px] items-center justify-center max-[700px]:min-h-[350px]">
+      {/* =========================
+          CENTER STORY CONTENT
+      ========================= */}
 
-          <div className="absolute h-[430px] w-[430px] rounded-full border border-[#dce1e8] before:absolute before:inset-[45px] before:rounded-full before:border before:border-[#e7eaf0] after:absolute after:inset-[100px] after:rounded-full after:border after:border-[#e7eaf0] max-[700px]:h-[300px] max-[700px]:w-[300px]"></div>
+      <div ref={contentRef} className="home-story-copy relative z-[2] w-[540px] max-w-[90%] text-center">
 
-          <img src="/compass.png" alt="" className="relative z-[2] w-[min(90%,460px)] object-contain" />
+        <span className="block text-[11px] font-bold uppercase tracking-[3px] text-[#1557ff]">
+          DATA + TECHNOLOGY
+        </span>
+
+        <h2 className="m-[25px_0_30px] text-[clamp(50px,5.8vw,82px)] font-medium leading-[0.92] tracking-[-0.07em] text-[#111] max-[700px]:text-[54px]">
+          Making
+          <br />
+          complexity
+          <br />
+          <span className="text-[#1557ff]">
+            simple.
+          </span>
+        </h2>
+
+        <p className="mx-auto mt-[35px] max-w-[520px] text-[17px] font-normal leading-[1.75] text-[#70757e] max-[700px]:text-[15px]">
+         Armed with 100 years of combined experience, a tech-first approach, unwavering focus, tactical know-how, and an unbeatable capacity for synergy, our team leaves no stone unturned in delivering the target: impactful political consulting is in PlanPol's DNA.
+        </p>
+
+      </div>
+
+      {/* =========================
+          COMPASS SPLIT CONTAINER
+      ========================= */}
+
+      <div className="pointer-events-none absolute left-1/2 top-1/2 z-[4] h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 max-[1000px]:h-[520px] max-[1000px]:w-[520px] max-[700px]:h-[430px] max-[700px]:w-[430px] max-[500px]:h-[340px] max-[500px]:w-[340px]">
+
+        {/* =========================
+            LEFT HALF
+        ========================= */}
+
+        <div ref={compassLeftRef} className="absolute left-0 top-0 h-full w-1/2 overflow-hidden">
+
+          <img src="/compass.png" alt="Compass" className="home-compass-left-image absolute left-0 top-0 h-full w-[200%] max-w-none object-contain" />
 
         </div>
 
-        {/* STORY CONTENT */}
-        <div className="home-story-copy">
+        {/* =========================
+            RIGHT HALF
+        ========================= */}
 
-          <span className="block text-[10px] font-bold tracking-[0.18em] text-[#777]">
-            DATA + TECHNOLOGY
-          </span>
+        <div ref={compassRightRef} className="absolute right-0 top-0 h-full w-1/2 overflow-hidden">
 
-          <h2 className="m-[25px_0_30px] text-[clamp(55px,6vw,90px)] font-medium leading-[0.9] tracking-[-0.07em] max-[700px]:text-[54px]">
-            Making
-            <br />
-            complexity
-            <br />
-            <span className="text-[#1557ff]">
-              simple.
-            </span>
-          </h2>
-
-          <p className="mb-[30px] max-w-[440px] text-[16px] font-normal leading-[1.75] text-[#70757e]">
-            We combine political experience
-            with technology, data and research
-            to uncover what really matters
-            to people.
-          </p>
-
-          <Link to="/our-story" className="inline-flex items-center gap-[15px] text-[13px] font-semibold text-[#111] no-underline">
-            Discover our story
-
-            <span className="text-[18px] text-[#1557ff] transition-transform duration-300 ease-in-out hover:translate-x-1 hover:-translate-y-1 motion-reduce:transition-none">
-              ↗
-            </span>
-          </Link>
+          <img src="/compass.png" alt="Compass" className="home-compass-right-image absolute right-0 top-0 h-full w-[200%] max-w-none object-contain" />
 
         </div>
 
       </div>
+
     </section>
   );
 }

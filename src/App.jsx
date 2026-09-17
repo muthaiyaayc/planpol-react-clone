@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -11,13 +11,18 @@ import Products from "./Pages/Products/Products";
 import Services from "./Pages/Services/Services";
 import FAQ from "./Pages/FAQ/FAQ";
 import Contact from "./Pages/Contact/Contact";
+import Blogs from "./Pages/Blogs/Blogs";
 
 function App() {
+  const location = useLocation();
+
+  const isBlogsPage = location.pathname === "/blogs";
+
   return (
     <>
       <ScrollToTop />
 
-      <Navbar />
+      {!isBlogsPage && <Navbar />}
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -27,6 +32,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/blogs" element={<Blogs />} />
       </Routes>
 
       <Footer />

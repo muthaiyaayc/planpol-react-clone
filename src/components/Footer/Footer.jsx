@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import gsap from "gsap";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -9,198 +9,234 @@ function Footer() {
   const footerRef = useRef(null);
 
   useEffect(() => {
-    const footer = footerRef.current;
-
-    if (!footer) return;
-
     const ctx = gsap.context(() => {
-      // Brand reveal
-      gsap.from(".footer-brand", {
-        y: 45,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: footer,
-          start: "top 88%",
-          once: true,
-        },
-      });
-
-      // Footer columns stagger
       gsap.from(".footer-column", {
-        y: 45,
-        opacity: 0,
-        duration: 0.9,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: footer,
-          start: "top 88%",
-          once: true,
-        },
-      });
-
-      // Logo icon entrance
-      gsap.from(".footer-logo-icon", {
-        scale: 0.5,
-        rotate: -20,
+        y: 35,
         opacity: 0,
         duration: 0.8,
-        delay: 0.15,
-        ease: "back.out(1.7)",
+        stagger: 0.12,
+        ease: "power3.out",
         scrollTrigger: {
-          trigger: footer,
-          start: "top 88%",
-          once: true,
+          trigger: footerRef.current,
+          start: "top 85%",
         },
       });
 
-      // Bottom copyright reveal
-      gsap.from(".footer-bottom", {
+      gsap.from(".footer-contact", {
         y: 25,
         opacity: 0,
-        duration: 0.8,
-        ease: "power2.out",
+        duration: 0.7,
+        delay: 0.25,
+        ease: "power3.out",
         scrollTrigger: {
-          trigger: ".footer-bottom",
-          start: "top 95%",
-          once: true,
+          trigger: footerRef.current,
+          start: "top 85%",
         },
       });
 
-      // Decorative line animation
-      gsap.from(".footer-line", {
-        scaleX: 0,
-        transformOrigin: "left center",
-        duration: 1.2,
+      gsap.from(".footer-bottom", {
+        y: 20,
+        opacity: 0,
+        duration: 0.7,
+        delay: 0.35,
         ease: "power3.out",
         scrollTrigger: {
-          trigger: ".footer-bottom",
-          start: "top 95%",
-          once: true,
+          trigger: footerRef.current,
+          start: "top 85%",
         },
       });
-    }, footer);
+    }, footerRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <footer ref={footerRef} className="relative w-full overflow-hidden bg-[#101a2d] text-white">
+    <footer ref={footerRef} className="w-full bg-[#0878f9] px-[16px] pt-[68px] text-white sm:px-[40px] lg:px-[9.4%] lg:pt-[68px]">
 
-      <div className="pointer-events-none absolute left-[-100px] top-[-150px] h-[320px] w-[320px] rounded-full bg-[rgba(23,105,255,0.08)] blur-[80px]"></div>
+      {/* MAIN FOOTER CONTENT */}
+      <div className="mx-auto grid max-w-[1540px] grid-cols-5 gap-[55px] pb-[58px] max-[900px]:grid-cols-2 max-[900px]:gap-[45px] max-[600px]:grid-cols-1 max-[600px]:gap-[35px]">
 
-      <div className="pointer-events-none absolute bottom-[-180px] right-[-120px] h-[320px] w-[320px] rounded-full bg-[rgba(77,140,255,0.06)] blur-[80px]"></div>
+        {/* PLANPOL */}
+        <div className="footer-column">
 
-      <div className="relative z-[2] mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-[40px] px-[25px] py-[55px] min-[601px]:grid-cols-2 min-[601px]:gap-[45px] min-[601px]:px-[6%] min-[601px]:py-[65px] min-[901px]:grid-cols-[2fr_1fr_1fr_1.2fr] min-[901px]:gap-[60px] min-[901px]:px-[8%] min-[901px]:py-[80px]">
+          <h3 className="m-0 mb-[25px] text-[16px] font-bold tracking-[-0.02em]">
+            PlanPol
+          </h3>
 
-        {/* BRAND */}
-        <div className="footer-brand max-w-full min-[601px]:max-w-full min-[901px]:max-w-[350px]">
+          <div className="flex flex-col gap-[14px]">
 
-          <Link to="/" className="footer-logo group mb-[25px] inline-flex items-center gap-[12px] text-white no-underline transition duration-300 ease-in-out hover:translate-x-[4px]">
+            <Link to="/" className="w-fit text-[16px] font-normal text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              Home
+            </Link>
 
-            <div className="footer-logo-icon flex h-[38px] w-[38px] items-center justify-center rounded-[10px] bg-[#1769ff] text-[20px] shadow-[0_8px_25px_rgba(23,105,255,0.25)] transition duration-[350ms] ease-in-out group-hover:rotate-[-6deg] group-hover:scale-[1.06] group-hover:shadow-[0_12px_30px_rgba(23,105,255,0.38)]">
-              🧠
+            <Link to="/our-story" className="w-fit text-[16px] font-normal text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              Our Story
+            </Link>
+
+            {/* BLOGS */}
+            <Link to="/blogs" className="w-fit text-[16px] font-normal text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              Blogs
+            </Link>
+
+          </div>
+
+          {/* CONTACT DETAILS */}
+          <div className="footer-contact mt-[88px]">
+
+            {/* PLANPOL LOGO */}
+            <div className="mb-[25px] flex h-[48px] w-[48px] items-center justify-center rounded-[10px] bg-white">
+              <img src="/planpol-brain.png" alt="PlanPol" className="h-[42px] w-[42px] object-contain" />
             </div>
 
-            <div className="text-[17px] font-normal min-[601px]:text-[19px]">
-              Everything is <span className="font-bold text-[#4d8cff] transition-colors duration-300 group-hover:text-[#72a5ff]">राजনীতি</span>
+            {/* PHONE */}
+            <a href="tel:9962166656" className="mb-[20px] flex w-fit items-center gap-[12px] text-[16px] text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              <span className="text-[18px]">♧</span>
+              <span>9962166656</span>
+            </a>
+
+            {/* EMAIL */}
+            <a href="mailto:admin@planpol.com" className="mb-[28px] flex w-fit items-center gap-[12px] text-[16px] text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              <span className="text-[17px]">✉</span>
+              <span>admin@planpol.com</span>
+            </a>
+
+            {/* SOCIAL ICONS */}
+            <div className="flex items-center gap-[20px]">
+
+              <a href="#" aria-label="LinkedIn" className="text-[16px] font-semibold text-white no-underline transition-transform duration-300 hover:-translate-y-1">
+                in
+              </a>
+
+              <a href="#" aria-label="X" className="text-[17px] font-semibold text-white no-underline transition-transform duration-300 hover:-translate-y-1">
+                X
+              </a>
+
+              <a href="#" aria-label="Instagram" className="text-[17px] font-semibold text-white no-underline transition-transform duration-300 hover:-translate-y-1">
+                ◎
+              </a>
+
+              <a href="#" aria-label="Facebook" className="text-[17px] font-semibold text-white no-underline transition-transform duration-300 hover:-translate-y-1">
+                f
+              </a>
+
             </div>
 
-          </Link>
-
-          <p className="m-0 max-w-full text-[15px] leading-[1.7] text-[#aab5c9] min-[601px]:max-w-full min-[901px]:max-w-[320px]">
-            AI-powered political technology
-            built with data, technology and
-            hyperlocal intelligence.
-          </p>
+          </div>
 
         </div>
 
-        {/* QUICK LINKS */}
-        <div className="footer-column flex flex-col items-start gap-[14px]">
+        {/* PRODUCTS */}
+        <div className="footer-column">
 
-          <h3 className="group relative mb-[10px] text-[18px] font-semibold text-white after:absolute after:bottom-[-6px] after:left-0 after:h-[2px] after:w-0 after:rounded-[10px] after:bg-[#4d8cff] after:transition-all after:duration-[350ms] after:content-[''] hover:after:w-[24px]">
-            Quick Links
-          </h3>
-
-          <Link to="/" className="group relative text-[15px] text-[#aab5c9] no-underline transition duration-300 hover:translate-x-[7px] hover:text-white">
-            Home
-            <span className="absolute left-[-12px] top-1/2 h-[4px] w-[4px] -translate-y-1/2 scale-0 rounded-full bg-[#4d8cff] opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100"></span>
-          </Link>
-
-          <Link to="/our-story" className="group relative text-[15px] text-[#aab5c9] no-underline transition duration-300 hover:translate-x-[7px] hover:text-white">
-            Our story
-            <span className="absolute left-[-12px] top-1/2 h-[4px] w-[4px] -translate-y-1/2 scale-0 rounded-full bg-[#4d8cff] opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100"></span>
-          </Link>
-
-          <Link to="/brains" className="group relative text-[15px] text-[#aab5c9] no-underline transition duration-300 hover:translate-x-[7px] hover:text-white">
-            Brains
-            <span className="absolute left-[-12px] top-1/2 h-[4px] w-[4px] -translate-y-1/2 scale-0 rounded-full bg-[#4d8cff] opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100"></span>
-          </Link>
-
-          <Link to="/products" className="group relative text-[15px] text-[#aab5c9] no-underline transition duration-300 hover:translate-x-[7px] hover:text-white">
+          <h3 className="m-0 mb-[25px] text-[16px] font-bold tracking-[-0.02em]">
             Products
-            <span className="absolute left-[-12px] top-1/2 h-[4px] w-[4px] -translate-y-1/2 scale-0 rounded-full bg-[#4d8cff] opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100"></span>
-          </Link>
+          </h3>
+
+          <div className="flex flex-col gap-[14px]">
+
+            <Link to="/products?product=voice" className="w-fit text-[16px] text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              PlanPol Voice
+            </Link>
+
+            <Link to="/products?product=PlanPol%20Party%20360%C2%B0" className="w-fit text-[16px] text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              PlanPol Party 360°
+            </Link>
+
+            <Link to="/products?product=booth" className="w-fit text-[16px] text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              PlanPol Booth
+            </Link>
+
+            <Link to="/products?product=strategy" className="w-fit text-[16px] text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              PlanPol Strategy
+            </Link>
+
+          </div>
 
         </div>
 
-        {/* EXPLORE */}
-        <div className="footer-column flex flex-col items-start gap-[14px]">
+        {/* SERVICES */}
+        <div className="footer-column">
 
-          <h3 className="relative mb-[10px] text-[18px] font-semibold text-white after:absolute after:bottom-[-6px] after:left-0 after:h-[2px] after:w-0 after:rounded-[10px] after:bg-[#4d8cff] after:transition-all after:duration-[350ms] after:content-[''] hover:after:w-[24px]">
-            Explore
-          </h3>
-
-          <Link to="/services" className="group relative text-[15px] text-[#aab5c9] no-underline transition duration-300 hover:translate-x-[7px] hover:text-white">
+          <h3 className="m-0 mb-[25px] text-[16px] font-bold tracking-[-0.02em]">
             Services
-            <span className="absolute left-[-12px] top-1/2 h-[4px] w-[4px] -translate-y-1/2 scale-0 rounded-full bg-[#4d8cff] opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100"></span>
-          </Link>
+          </h3>
 
-          <Link to="/faq" className="group relative text-[15px] text-[#aab5c9] no-underline transition duration-300 hover:translate-x-[7px] hover:text-white">
-            FAQ
-            <span className="absolute left-[-12px] top-1/2 h-[4px] w-[4px] -translate-y-1/2 scale-0 rounded-full bg-[#4d8cff] opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100"></span>
-          </Link>
+          <div className="flex flex-col gap-[14px]">
 
-          <Link to="/contact" className="group relative text-[15px] text-[#aab5c9] no-underline transition duration-300 hover:translate-x-[7px] hover:text-white">
-            Contact us
-            <span className="absolute left-[-12px] top-1/2 h-[4px] w-[4px] -translate-y-1/2 scale-0 rounded-full bg-[#4d8cff] opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100"></span>
-          </Link>
+            <Link to="/services" className="max-w-[240px] text-[16px] leading-[1.45] text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              Strategy & Campaign Execution
+            </Link>
+
+            <Link to="/services" className="max-w-[240px] text-[16px] leading-[1.45] text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              Data, Research & Intelligence
+            </Link>
+
+            <Link to="/services" className="max-w-[240px] text-[16px] leading-[1.45] text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              Communication & Candidate Services
+            </Link>
+
+          </div>
 
         </div>
 
-        {/* CONTACT */}
-        <div className="footer-column flex flex-col items-start gap-[14px]">
+        {/* EXIT POLLS */}
+        <div className="footer-column">
 
-          <h3 className="relative mb-[10px] text-[18px] font-semibold text-white after:absolute after:bottom-[-6px] after:left-0 after:h-[2px] after:w-0 after:rounded-[10px] after:bg-[#4d8cff] after:transition-all after:duration-[350ms] after:content-[''] hover:after:w-[24px]">
-            Contact
+          <h3 className="m-0 mb-[25px] text-[16px] font-bold tracking-[-0.02em]">
+            Exit Polls 2026 TN
           </h3>
 
-          <a href="tel:9962166656" className="group relative text-[15px] text-[#aab5c9] no-underline transition duration-300 hover:translate-x-[7px] hover:text-white">
-            9962166656
-            <span className="absolute left-[-12px] top-1/2 h-[4px] w-[4px] -translate-y-1/2 scale-0 rounded-full bg-[#4d8cff] opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100"></span>
+          <a href="#" className="w-fit text-[16px] text-white no-underline transition-opacity duration-300 hover:opacity-70">
+            Exit Poll
           </a>
 
-          <a href="mailto:admin@planpol.com" className="group relative text-[15px] text-[#aab5c9] no-underline transition duration-300 hover:translate-x-[7px] hover:text-white">
-            admin@planpol.com
-            <span className="absolute left-[-12px] top-1/2 h-[4px] w-[4px] -translate-y-1/2 scale-0 rounded-full bg-[#4d8cff] opacity-0 transition duration-300 group-hover:scale-100 group-hover:opacity-100"></span>
-          </a>
+        </div>
+
+        {/* CONTACT US */}
+        <div className="footer-column">
+
+          <h3 className="m-0 mb-[25px] text-[16px] font-bold tracking-[-0.02em]">
+            Contact us
+          </h3>
+
+          <div className="flex flex-col items-start gap-[14px]">
+
+            <Link to="/contact" className="text-[16px] text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              Get in touch
+            </Link>
+
+            <a href="#" className="text-[16px] text-white no-underline transition-opacity duration-300 hover:opacity-70">
+              Join PlanPol
+            </a>
+
+            <Link to="/contact" className="mt-[2px] inline-flex rounded-full bg-white px-[19px] py-[11px] text-[15px] font-medium text-[#0878f9] no-underline shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-transform duration-300 hover:-translate-y-1">
+              Start trial
+            </Link>
+
+          </div>
 
         </div>
 
       </div>
 
-      {/* FOOTER BOTTOM */}
-      <div className="footer-bottom relative z-[2] w-full px-[25px] pb-[20px] text-center min-[601px]:px-[6%] min-[601px]:pb-[20px] min-[901px]:px-[8%] min-[901px]:pb-[22px]">
+      {/* BOTTOM FOOTER */}
+      <div className="footer-bottom flex min-h-[62px] items-center justify-between border-t border-[rgba(255,255,255,0.45)] text-[13px] text-white max-[700px]:flex-col max-[700px]:items-start max-[700px]:gap-[15px] max-[700px]:py-[20px]">
 
-        <div className="footer-line mb-[22px] h-px w-full bg-[rgba(255,255,255,0.1)]"></div>
-
-        <p className="m-0 text-[12px] leading-[1.5] text-[#8793a8] min-[601px]:text-[13px]">
-          @2026. All rights reserved by
-          PLANPOL (OPC) PRIVATE LIMITED
+        <p className="m-0">
+          @2026. All rights reserved by PLANPOL (OPC) PRIVATE LIMITED
         </p>
+
+        <div className="flex items-center gap-[25px] max-[500px]:gap-[15px]">
+
+          <a href="#" className="text-white no-underline transition-opacity duration-300 hover:opacity-70">
+            Terms & Conditions
+          </a>
+
+          <a href="#" className="text-white no-underline transition-opacity duration-300 hover:opacity-70">
+            Privacy Policy
+          </a>
+
+        </div>
 
       </div>
 
