@@ -100,23 +100,25 @@ function StatsSection() {
 
       <div className="relative z-[5] grid min-h-[650px] w-full grid-cols-[55%_45%] gap-[30px] px-[5%] pt-[70px] max-[1000px]:grid-cols-[52%_48%] max-[1000px]:px-[4%] max-[700px]:flex max-[700px]:min-h-0 max-[700px]:flex-col max-[700px]:gap-0 max-[700px]:px-[25px] max-[700px]:pt-[50px]">
 
-        {/* STATS */}
+        {/* ===================================================== */}
+        {/* STATS - ONLY THE NUMBER GRID IS CHANGED TO 2 COLUMNS */}
+        {/* ===================================================== */}
 
-        <div className="grid w-full max-w-[570px] grid-cols-3 gap-x-[55px] gap-y-[65px] text-left max-[1000px]:gap-x-[30px] max-[1000px]:gap-y-[50px] max-[700px]:mx-auto max-[700px]:max-w-[520px] max-[700px]:gap-x-[25px] max-[700px]:gap-y-[38px]">
+        <div className="grid w-full max-w-[570px] grid-cols-2 gap-x-[90px] gap-y-[58px] text-center max-[1000px]:gap-x-[55px] max-[1000px]:gap-y-[50px] max-[700px]:mx-auto max-[700px]:max-w-[520px] max-[700px]:gap-x-[70px] max-[700px]:gap-y-[45px] max-[500px]:gap-x-[45px] max-[500px]:gap-y-[38px]">
 
           {stats.map((stat, index) => (
-            <div key={stat.label} className="home-stat-item flex min-h-[82px] flex-col">
+            <div key={stat.label} className="home-stat-item flex min-h-[82px] flex-col items-center justify-center">
 
               <div
                 ref={(element) => {
                   statRefs.current[index] = element;
                 }}
-                className="text-[clamp(42px,4.4vw,64px)] font-normal leading-[0.95] tracking-[-0.055em] text-white max-[1000px]:text-[48px] max-[700px]:text-[40px] max-[500px]:text-[34px]"
+                className="whitespace-nowrap text-[clamp(42px,4.4vw,64px)] font-normal leading-[0.95] tracking-[-0.055em] text-white max-[1000px]:text-[48px] max-[700px]:text-[40px] max-[500px]:text-[34px]"
               >
                 0
               </div>
 
-              <span className="mt-[12px] text-[14px] leading-none text-white/95 max-[1000px]:text-[12px] max-[700px]:mt-[9px] max-[700px]:text-[11px] max-[500px]:text-[10px]">
+              <span className="mt-[12px] whitespace-nowrap text-[14px] leading-none text-white/95 max-[1000px]:text-[12px] max-[700px]:mt-[9px] max-[700px]:text-[11px] max-[500px]:text-[10px]">
                 {stat.label}
               </span>
 
@@ -125,7 +127,9 @@ function StatsSection() {
 
         </div>
 
-        {/* HEADING + DESCRIPTION */}
+        {/* ===================================================== */}
+        {/* HEADING + DESCRIPTION - ORIGINAL CONTENT KEPT */}
+        {/* ===================================================== */}
 
         <div className="w-full max-w-[560px] px-[25px] text-center max-[1000px]:px-[5px] max-[700px]:mx-auto max-[700px]:mt-[55px] max-[700px]:max-w-[560px]">
 
@@ -141,7 +145,9 @@ function StatsSection() {
 
       </div>
 
-      {/* CROWD */}
+      {/* ===================================================== */}
+      {/* CROWD IMAGE - ORIGINAL KEPT */}
+      {/* ===================================================== */}
 
       <div className="home-stats-crowd absolute bottom-[-5px] right-[-10px] z-[2] w-[48%] max-w-[700px] max-[1200px]:w-[50%] max-[1000px]:right-[-15px] max-[1000px]:w-[54%] max-[700px]:bottom-0 max-[700px]:right-[-22%] max-[700px]:w-[105%] max-[500px]:right-[-32%] max-[500px]:w-[120%]">
 
